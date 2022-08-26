@@ -37,6 +37,7 @@ main {
     max-width: var(--max-width);
     display: flex;
     min-height: 760px;
+    position: relative;
 }
 
 .hero .left {
@@ -294,12 +295,13 @@ svg.line, svg.line path {
 .price {
     border: 1px solid var(--gray);
     background: var(--white);
-    padding: 20px;
+    padding: 36px 70px;
     width: 100%;
-    border-radius: 10px;
+    border-radius: 15px;
     display: flex;
     flex-direction: column;
     box-shadow: 0 0 25px #00a9ed30;
+    position: relative;
 }
 
 .price .length {
@@ -326,7 +328,6 @@ svg.line, svg.line path {
     display: flex;
     flex-direction: column;
     width: fit-content;
-    margin-top: 34px;
 }
 
 .amt-last {
@@ -353,7 +354,7 @@ svg.line, svg.line path {
     display: flex;
     align-self: center;
     gap: 20px;
-    width: 80%;
+    width: 100%;
     border-bottom: #eeeeee 1px solid;
     padding: 25px 0;
     font-size: 18px;
@@ -372,11 +373,12 @@ svg.line, svg.line path {
     border-radius: 6px;
     font-size: 20px;
     cursor: pointer;
+    margin-top: 20px;
+    width: 100%;
 }
 
 .feature img {
     width: 24px;
-    height: 24px;
     align-self: center;
 }
 
@@ -387,8 +389,10 @@ svg.line, svg.line path {
     width: fit-content;
     padding: 5px 20px;
     border-radius: 12px;
-    align-self: flex-end;
     font-size: 18px;
+    position: absolute;
+    top: 15px;
+    right: 15px;
 }
 
 .faq_list {
@@ -474,6 +478,8 @@ svg.line, svg.line path {
     display: flex;
     font-size: 17px;
     align-self: center;
+    justify-self: center;
+    text-align: center;
 }
 
 .faq .buttons a {
@@ -546,7 +552,58 @@ footer .row:last-child {
     padding: 0 45px;
 }
 
+.mobilehroimg {
+    position: absolute;
+    z-index: -1;
+    max-width: 599px;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    opacity: 0.2;
+    display: none;
+}
+
+.vb {
+    width: 100%;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 115px;
+    font-size: 18px;
+}
+
+.vb div {
+    display: flex;
+    justify-content: space-between;
+    max-width: 370px;
+    width: 100%;
+}
+
+
 @media screen and (max-width: 800px) {
+    .vb {
+        font-size: 14px;
+    }
+    .vb div {
+        max-width: 260px;
+    }
+
+    footer .row a {
+        font-size: 14px;
+    }
+    footer .row .title {
+        font-size: 16px;
+    }
+    footer .row {
+        gap: 126x;
+    }
+    .headertext {
+        margin-bottom: 30px;
+    }
+    .wcu, .pricing, .faq {
+        margin-top: 50px;
+    }
     .hero .left .hero-text {
         text-align: center;
         gap: 22px;
@@ -558,24 +615,40 @@ footer .row:last-child {
         justify-content: center;
     }
     .hero .left h1 {
-        font-size: 28px;
+        font-size: 30px;
     }
     .hero .left p {
-        font-size: 18px;
+        font-size: 16px;
     }
     .hero .buttons a {
-        font-size: 18px;
+        font-size: 15px;
     }
     .headertext {
+        font-size: 31px;
+    }
+    .pricing .headertext {
         font-size: 31px;
     }
     .info .box p {
         font-size: 16px;
     }
-    .info .box .smalltitle {
+    .info .box .smalltitle, .div_2x2 .title {
         font-size: 18px;
     }
+    .mobilehroimg {
+        display: block;
+    }
+    .price .feature {
+        font-size: 14px;
+    }
+    .feature img {
+        width: 16px;
+    }
+    .aoq {
+        font-size: 12px;
+    }
 }
+
 
 @media screen and (max-width: 1500px) {
     .hero .right {
@@ -595,12 +668,23 @@ footer .row:last-child {
         width: 100%;
         border-radius: 24px;
         padding: 25px;
+        gap: 4px;
     }
     .div_2x2 p {
         font-size: 16px;
     }
     .div_2x2 .parent .box .image img {
-        max-width: 66%;
+        max-width: 80px;
+    }
+    .price .top h1 {
+        font-size: 62px;
+    }
+    .price .features {
+        gap: 0;
+    }
+    .price .top .amt span {
+        font-size: 12px;
+        text-align: right;
     }
 }
 
@@ -616,7 +700,22 @@ footer .row:last-child {
     }
     .info .parent .box {
         width: 100%;
-        justify-content: flex-start;
+        justify-content: center;
+        flex-direction: column;
+        text-align: center;
+        background: var(--turqoise);
+        width: 100%;
+        padding: 25px;
+    }
+    .info {
+        background: transparent;
+        padding: 0;
+    }
+    .info .box {
+        gap: 10px;
+    }
+    .info .parent .box img {
+        max-width: 35px
     }
     .pricelist {
         flex-direction: column-reverse;
@@ -629,46 +728,64 @@ footer .row:last-child {
         gap: 25px;
         flex-direction: rows;
         width: auto;
-        padding: 0 25px;
+        padding: 8px;
         flex-wrap: wrap;
+    }
+    footer .row {
+        min-width: 45%;
     }
     .question .q span {
         width: 70%;
-        font-size: 20px;
+        font-size: 14px;
+        font-weight: 600;
+    }
+    .question .a {
+        font-size: 14px;
     }
     .amt {
         align-self: flex-start;
-        padding-left: 30px;
     }
     .price .length {
         text-align: left!important;
     }
     .hero {
-        min-height: 560px;
+        min-height: 350px;
     }
     header .buttons a:first-child {
         display: none;
     }
     .faq .buttons a {
         width: fit-content;
+        font-size: 15px;
+        text-align: center;
     }
     .price .feature {
         border: none;
-        padding: 10px 0;
+        padding: 6px 0;
     }
     .price {
         border-radius: 24px;
+        padding: 24px 28px;
     }
     .price .feature:last-child {
         padding-bottom: 0;
     }
     .buy {
+        padding: 14px;
+        font-size: 16px;
         text-transform: uppercase;
-        letter-spacing: 1.4px;
-        padding: 20px;
-        margin: 14px 0;
+        letter-spacing: 2.4px;
+        width: 100%;
+        margin-top: 22px;
     }
     .bestdeal {
         border-radius: 20px;
+        font-size: 14px;
+    }
+    .price .top {
+        gap: 0;
+    }
+    .pricing {
+        padding: 65px 36px;
     }
 }
